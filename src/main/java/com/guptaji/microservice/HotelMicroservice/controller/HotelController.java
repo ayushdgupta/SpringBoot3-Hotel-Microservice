@@ -31,7 +31,9 @@ public class HotelController {
   public ResponseEntity<?> getHotelById(@PathVariable("id") int hotelId) {
     LOG.info("Hit getHotelById API");
     Hotel hotel = hotelService.getHotelById(hotelId);
-    return new ResponseEntity<>(hotel, HttpStatus.FOUND);
+    // HttpStatus.FOUND creating the issue in feign client.
+    //    return new ResponseEntity<>(hotel, HttpStatus.FOUND);
+    return new ResponseEntity<>(hotel, HttpStatus.OK);
   }
 
   @GetMapping
